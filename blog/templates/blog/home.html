@@ -1,0 +1,50 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <form class="d-flex" method="post"
+    action="{% url 'sub_news' %}">
+    {% csrf_token %}
+    <input class="form-control me-2" type="search" placeholder="Read News"aria-label="Read News" name="Submitted">
+    <button class="btn
+     btn-outline-success" type="submit">Read News</button>
+    </form>
+  <!--  {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %} -->
+
+
+    <div class="container">
+      <h2 class="text-center"><u>NEWS</u></h2><br>
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>LINK</th>
+            <th>TITLE</th>
+            <th>DATE</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!-- jinja2 Technique -->
+        {% if d %}
+        {% for i in d %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.link}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.date}}</td>
+          </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+      </table>
+    </div>
+{% endblock content %}

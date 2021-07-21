@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    {% if Submitted %}
+        <h1>The recommendations are :</h1>
+        <br/>
+        {% for result in display %}
+            {{ result }}<br/>
+        {% endfor %}
+    {% else %}
+        <p>Select the news article</p>
+    {% endif %}
+{% endblock content %}
